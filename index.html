@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam</title>
+</head>
+<body>
+    
+    <div>
+        <video autoplay="true" id="video-webcam">
+            Browsermu tidak mendukung
+        </video>
+    </div>
+
+    <script>
+        let video = document.querySelector('#video-webcam');
+
+        navigator,getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+        if( navigator.getUserMedia ) {
+            navigator.getUserMedia({ video: true }, handleVideo, videoError);
+        }
+
+        function handleVideo(stream) {
+            video.srcObject = stream;
+        }
+
+        function videoError(e) {
+            alert('Izinkan menggunakan webcam untuk demo!');
+        }
+    </script>
+</body>
+</html>
